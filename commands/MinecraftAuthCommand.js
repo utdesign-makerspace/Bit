@@ -1,24 +1,27 @@
 const { Command } = require('discord-akairo');
 
+const fetch = require("node-fetch");
+
 class MinecraftAuthCommand extends Command {
    constructor() {
-       super('Minecraft Account Authorization', { //Official dicord command name TBD
-          aliases: ['MAA','Minecraft Account Authorization'] 
+       super('MAA', { //Official dicord command name TBD
+          aliases: ['MAA','Minecraft Account Authorization'],
+          args: [
+            {
+               id: 'token',
+               type: 'string',
+               
+            }
+          ]
        });
    }
 
-   async exec(message) {
-      const userMsg = message.content;
+   async exec(message, args) {    
       let userInfo = {
-        uuid = null,
-        username = null
+        uuid : null,
+        username : null
       }
-
-      let token = message.content.match(/?(*)/);
-      token = token[1];
-      console.log(userMsg);
-       
-      message.reply('A minecraft account is trying to be authorized for '+message.author.username); // Add in the user
+      let token = args.token;
       console.log("\nA minecraft account is trying to be authorized");
 
       fetch('https://mc-oauth.net/api/api?token', {
@@ -35,7 +38,7 @@ class MinecraftAuthCommand extends Command {
             message.reply('Thank you ' + userInfo.username);
          }
          else{
-            message.reply('error');
+            message.reply('Invalid Token and/or Error Occured');
          }
       });
    }
