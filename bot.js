@@ -41,4 +41,5 @@ client.on("raw", event => {
   }
   
 });
+
 client.login(process.env.DISCORD_TOKEN);
