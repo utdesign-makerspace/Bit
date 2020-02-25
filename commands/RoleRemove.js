@@ -1,11 +1,11 @@
 const { Command } = require('discord-akairo');
 // Role command that serves as back up to the react role command. 
-class RoleCommand extends Command {
+class RoleRemove extends Command {
     constructor() {
-        super('role', {
+        super('roleremove', {
             args: [
                     {
-                     id: 'role',
+                     id: 'remove',
                      //Roles list
                      type: ['Python', 'NodeJS','IOT','Drones','Arduino','React'],
                      //Probably poor error handling
@@ -14,53 +14,55 @@ class RoleCommand extends Command {
                     }
 
                  ],
-            aliases: ['role']
+            aliases: ['roleremove']
         });
+
+      
+
     }
-    //TODO add json file to for scalability
     async exec(message, args){
 
-        switch(args.role){
+        switch(args.remove){
             //Switch case for each role
             case 'NodeJS':
-                message.member.addRole('669010113440251944')
-                .then(console.log('Added NodeJS role'))
-                .then(message.reply('Role Added'))
+                message.member.removeRole('669010113440251944')
+                .then(console.log('Removed NodeJS role'))
+                .then(message.reply('Role Removed'))
                 .catch(console.error);
         
                 break;
             case 'IOT':
-                message.member.addRole('669010161444323358')
-                .then(console.log('Added IOT role'))
-                .then(message.reply('Role Added'))
+                message.member.removeRole('669010161444323358')
+                .then(console.log('Removed IOT role'))
+                .then(message.reply('Role Removed'))
                 .catch(console.error);
             
                 break;       
             case 'Drones':
-                message.member.addRole('669010205832511489')
-                .then(console.log('Added Drones role'))
-                .then(message.reply('Role Added'))
+                message.member.removeRole('669010205832511489')
+                .then(console.log('Removed Drones role'))
+                .then(message.reply('Role Removed'))
                 .catch(console.error);
                 
             break;
             case 'Python':
-                message.member.addRole('669010258857033749')
-                .then(console.log('Added Python role'))
-                .then(message.reply('Role Added'))
+                message.member.removeRole('669010258857033749')
+                .then(console.log('Removed Python role'))
+                .then(message.reply('Role Removed'))
                 .catch(console.error);
         
                 break;
             case 'Arduino':
-                message.member.addRole('669010402901884957')
-                .then(console.log('Added Arduino role'))
-                .then(message.reply('Role Added'))
+                message.member.removeRole('669010402901884957')
+                .then(console.log('Removed Arduino role'))
+                .then(message.reply('Role Removed'))
                 .catch(console.error);
             
                 break;
             case 'React':
-                message.member.addRole('669010450645516328')
-                .then(console.log('Added React role'))
-                .then(message.reply('Role Added'))
+                message.member.removeRole('669010450645516328')
+                .then(console.log('Removed React role'))
+                .then(message.reply('Role Removed'))
                 .catch(console.error);
             
                 break;
@@ -71,7 +73,5 @@ class RoleCommand extends Command {
         }
     
     }
-
 }
-
-module.exports = RoleCommand;
+module.exports = RoleRemove;
